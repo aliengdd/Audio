@@ -1,0 +1,14 @@
+<div ng-style="{'width':TwoPlayerCols,'height':'100%','float':'left'}">
+	<ul class="clearfix gl-table-head list-unstyled">
+		<li class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" ng-class="{'gl-list-li':glHoverValue||glClickValue[$index]}">歌曲</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">演唱者</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">专辑</div>
+		</li>
+	</ul>
+	<div ng-style="{'width':'100%','overflow':'auto','height':TwoPlayerTableHeight}">
+		<ul class="gl-table-body list-unstyled clearfix">
+			<guo-fav-list-drag ng-repeat="item in fdata" data="fdata" item="item"></guo-fav-list-drag>
+		</ul>
+	</div>
+</div>

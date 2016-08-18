@@ -1,0 +1,14 @@
+<span>
+	<span class="fa-stack fa-2x gl-palm" ng-click="player.PlayerPrev()">
+		<i class="fa fa-circle-thin fa-stack-2x"></i>
+		<i class="fa fa-fast-backward fa-stack-1x"></i>
+	</span>
+	<span class="fa-stack fa-2x gl-palm" ng-click="(player.playing)&&(!player.pasuing)?player.PlayerPasue():player.PlayerPlay()">
+		<i class="fa fa-circle-thin fa-stack-2x"></i>
+		<i class="fa fa-play fa-stack-1x" ng-class="{'fa-pause':(player.playing)&&(!player.pasuing)}"></i>
+	</span>
+	<span class="fa-stack fa-2x gl-palm" ng-click="player.PlayerNext()">
+		<i class="fa fa-circle-thin fa-stack-2x"></i>
+		<i class="fa fa-fast-forward fa-stack-1x"></i>
+	</span>
+</span>

@@ -1,0 +1,20 @@
+<div ng-style="{'width':TwoPlayerCols,'height':'100%','float':'left'}">
+	<ul class="clearfix gl-table-head list-unstyled">
+		<li class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 gl-palm" ng-class="{'gl-list-li':glHoverValue||glClickValue[$index]||((player.index == $index)&&(player.playing))}" ng-click="orderguo(player.data[player.index].sid,'name');">
+				<span style="margin-right: 5px;">歌曲</span><i class="fa fa-sort"></i>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 gl-palm" ng-click="orderguo(player.data[player.index].sid,'singer')">
+				<span style="margin-right: 5px;">演唱者</span><i class="fa fa-sort"></i>
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 gl-palm" ng-click="orderguo(player.data[player.index].sid,'albums')">
+				<span style="margin-right: 5px;">专辑</span><i class="fa fa-sort"></i>
+			</div>
+		</li>
+	</ul>
+	<div ng-style="{'width':'100%','overflow':'auto','height':TwoPlayerTableHeight}">
+		<ul class="gl-table-body list-unstyled clearfix">
+			<guo-playing-list-drag ng-repeat="item in data" data="data" item="item" player="player"></guo-playing-list-drag>
+		</ul>
+	</div>
+</div>

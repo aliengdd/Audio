@@ -1,0 +1,5 @@
+<span class="fa-stack fa-lg gl-palm gl-position-abs">
+			  <i class="fa fa-volume-off fa-stack-1x" style="font-size: 24px;"></i>
+			  <i ng-if="(player.volume == 100) && !player.PlayerGetMuted()" class="fa fa-plus fa-stack-1x" style="margin-left:12px;margin-top:0px; font-size: 12px;"></i>
+			  <i ng-if="(player.volume == 0) || player.PlayerGetMuted();" class="fa fa-times fa-stack-1x" style="margin-left:12px;margin-top:0px; font-size: 12px;"></i>
+</span>

@@ -1,0 +1,15 @@
+<li ng-mouseover="glHoverValue=true;" ng-mouseleave ="glHoverValue=false;" ng-click="clickll($index)" ng-dblclick="player.PlayerChoice($index)">
+	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+		<div class="row">
+			<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" ng-class="{'gl-list-li':glHoverValue||glClickValue[$index]||((player.index == $index)&&(player.playing))}">
+				<span ng-class="{'gl-list-color':(player.index == $index)&&(player.playing)}">{{item.info.name}}<gl-player-loop ng-if="(player.index == $index)&&(player.playing)" ng-style="{'margin-left':'10px'}"></gl-player-loop></i></span>
+			</div>
+			<div ng-show="glHoverValue||glClickValue[$index]" class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ">
+		<i class="fa fa-play gl-palm" ng-class="{'fa-pause':(player.index == $index)&&(player.playing)&&(!player.pasuing),'gl-list-color':glClickValue[$index]||((player.index == $index)&&(player.playing))}" ng-click="player.PlayerChoice($index)"></i>
+			
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><span>{{item.info.singer}}</span></div>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><span>{{item.info.albums}}</span></div>
+</li>

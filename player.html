@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MyAudio</title>
+		<link href="css/bootstrap/bootstrap.css" rel="stylesheet"/>
+		<link href="css/bootstrap/bootstrap-theme.css" rel="stylesheet" />
+		<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+		<script src="js/jquery/jquery-1.11.3.min.js"></script>
+		<script src="js/bootstrap/bootstrap.js"></script>
+		<script src="js/angular/angular.js"></script>
+		<script src="js/angular/angular-route.js"></script>
+		<script src="js/app/module/module.js"></script>
+		<script src="js/app/config/config.js"></script>
+		<script src="js/app/service/function.js"></script>
+		<script src="js/app/controller/controller.js"></script>
+		<script src="js/app/directive/directive.js"></script>
+		<script src="js/app/data/data.js"></script>
+		<script src="js/app/data/favoriteDate.js"></script>
+		<link href="css/default/default.css" rel="stylesheet" />
+		<style type="text/css">
+			@font-face {font-family:guole; src: url("./fonts/新蒂小丸子体.ttf");
+			}  
+			html, body{
+				height:100%; 
+				width: 100%;
+				min-width:800px;
+				min-height: 400px;
+				
+				overflow: hidden;
+				font-family: guole;
+			}
+			*{
+				-moz-user-select: none;
+				position: relative;
+				margin-top: ;
+			}
+			span{
+				cursor: default;
+			}
+			
+		</style>
+		<script>
+			
+		</script>
+	</head>
+	<body onselectstart="return false">
+		<div ng-app="myapp" ng-style="{'height':'100%'}">
+			<div ng-controller="mm" ng-style="{'height':'100%'}">
+				<div class="glWai">
+					<!---one--->
+					<div ng-class="{'gl-player-one':true,'gl-blur-redgray':true}" class="gl-position-rel">
+						<span class="fa fa-gg fa-3x gl-f-white" style="margin-top: 5px;margin-left: 25px;"></span>
+						<span class="fa fa-3x gl-f-white" style="margin-top: 5px;margin-left: 25px;">GL-Player</span>
+						<span></span>
+					</div>
+					<!---two--->
+					<div ng-style="{'height':TwoDefaultHeight,'width':'100%'}" class="gl-position-rel">
+						<div style="width: 200px;height: 100%;float:left;border-right: 2px solid rgba(220,220,220,1);">
+							<div class="input-group" style="padding-left: 10px;padding-right:10px;padding-top:4px;margin-bottom: 3px;">
+							  <input type="text" class="form-control" placeholder="老情歌   黄义达" style="font-size: 16px;">
+							  <span class="input-group-addon gl-palm" ><i class="fa fa-search"></i></span>
+							</div>
+						</div>
+						<!--2--->
+						<div ng-view></div>
+						<!--more-->
+					</div>
+					<!---three--->
+					<div ng-class="{'gl-player-three':true,'gl-blur-redgray':true}" class="gl-position-rel" >
+							<div ng-class="{'gl-player-three-group-left':true}">
+									<span class="gl-player-three-button gl-player-three-previous" ng-click="player.PlayerPrev()"></span>
+									<span class="gl-player-three-button gl-player-three-play" ng-class="{'gl-player-three-pause':(player.playing)&&(!player.pasuing)}" ng-click="(player.playing)&&(!player.pasuing)?player.PlayerPasue():player.PlayerPlay()"></span>
+									<span class="gl-player-three-button gl-player-three-next" ng-click="player.PlayerNext()"></span>
+									<gl-player-mode ng-style="{'color':'#ffffff','top':'-8px'}" title="{{player.playMode[player.playModeState].name}}" ></gl-player-mode>
+							</div>
+							
+							<div ng-class="{'gl-player-three-group-middle':true}" ng-style="{'width':ThreeMiddleWidth}" class="clearfix">
+								<div style="width: 70px;float: left;height:100%">
+									<span ng-class="{'gl-f-white':true,'gl-player-three-currentTime':true}">{{player.progress || '00 : 00'}}</span>
+								</div>
+
+								<div ng-style="{'width':ThreePlayerProgressWidth,'float':'left','height':'100%'}" class="clearfix">
+									<gl-progress player="player" ng-style="{'width':'100%','float':'left','margin-top':'32px'}"></gl-progress>
+								</div>
+								
+								<div style="width: 70px;float: left;height:100%" class="clearfix">
+									<span ng-class="{'gl-f-white':true,'gl-player-three-durationTime':true}">{{player.duration || '00 : 00'}}</span>
+								</div>
+								<div style="width:100%;height: 30px;position: absolute;left:0px; top: 0px;">
+									<span style="font-size: 16px; color: #FFFFFF;position: relative;left: 27px;top: 10px;">{{player.data[player.index||0].info.name}} - {{player.data[player.index||0].info.singer}}</span>
+									<span style="font-size: 16px; color: #FFFFFF;position: relative;left: 27px;top: 10px;"></span>
+								</div>
+							</div>
+							
+							<div ng-class="{'gl-player-three-group-right':true}">
+								<gl-volume player="player" showvolume="showvolume" ng-show="showvolume" ng-style="{'left':'-18px','top':'-144px'}" ></gl-volume>
+								<gl-trumpet player="player" showvolume="showvolume" ng-style="{'color':'#ffffff','top':'22px'}" ng-click="showvolume = ! showvolume;" title="音量" data-placement="bottom"></gl-trumpet>
+							</div>
+						</div>
+					</div>
+				<!--ngRoute的原因 只能这么写-->
+				<div style="width: 250px;position:absolute;left: 0px;top:102px;">	
+					
+					<a ng-href="#list"  class=" gl-position-rel gl-f-gray gl-player-left-module gl-palm" ng-click="clickleft(0)" ng-class="{'gl-player-left-module-a':glLeftClickValue[0]}">
+						<i class="fa fa-list" ></i><span style="margin-left: 5px;" class="gl-palm">播放列表</span>
+					</a>
+					
+					<a ng-href="#favorite"  class="gl-position-rel gl-f-gray gl-player-left-module gl-palm" ng-click="clickleft(1)" ng-class="{'gl-player-left-module-a':glLeftClickValue[1]}">
+									<i class="fa fa-heart" ></i><span style="margin-left: 5px;" class="gl-palm">我最爱的</span>
+					</a>
+					<a href="#analysis"  class="gl-f-gray gl-player-left-module gl-palm gl-position-rel" ng-click="clickleft(2)" ng-class="{'gl-player-left-module-a':glLeftClickValue[2]}"> 
+						<i class="fa fa-pie-chart" ></i><span style="margin-left: 5px;" class="gl-palm">我的数据</span>
+					</a>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>

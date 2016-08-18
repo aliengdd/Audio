@@ -1,0 +1,12 @@
+<div class="gl-position-abs glVolumeContainer" >
+	<div class="gl-volume-container gl-redgray gl-position-abs" style="left: 20px;top: 0px;"></div>
+	<div class="gl-volume-content gl-position-abs gl-blur-white" style="left: 20px;top:2px">
+		<div class="gl-position-abs gl-white gl-volume-progress glVolumeProgress"></div>
+		<div ng-style="{'height':(1-player.PlayerGetVolume())*110}" class="gl-position-abs gl-gray gl-volume-progress">
+			<span ng-style="{'font-size':'20px','color':'#ffffff','margin-left':'-8px','top':'115px'}" class="gl-palm gl-position-rel" title="工具器">
+				<i class="fa fa-cog"></i>
+			</span>
+		</div>
+		<gl-volume-dot player="player" showvolume="showvolume"></gl-volume-dot>
+	</div>
+</div>
